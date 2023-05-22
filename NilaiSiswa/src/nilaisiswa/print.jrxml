@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5b0ae5d-bd66-4377-98e8-72a8faea8b51">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nama" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nis" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nisn" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="kelas" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="semester" class="java.lang.String">
+		<defaultValueExpression><![CDATA[Genap]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tahun_ajaran" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tingkat" class="java.lang.String">
+		<defaultValueExpression><![CDATA[X]]></defaultValueExpression>
+	</parameter>
+	<parameter name="wakel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nip_wakel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="kepsek" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nip_kepsek" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select mapel.mapel as `Mata Pelajaran`, round(avg(nilai.nilai)) as `Nilai Akhir`, concat(kelompok_mapel.id_kelompok, '. ', kelompok_mapel.kelompok) as kelompok, 'Lorem ip Sum dolor sit amet, kamaitachi no mikazuchi, sabaku no wa ore no stando da' as `Capaian Kompetensi` from nilai, mapel, siswa, kelompok_mapel where nilai.id_mapel=mapel.id_mapel and mapel.kelompok=kelompok_mapel.id_kelompok and nilai.id_siswa=$P{id} and nilai.tingkat=$P{tingkat} and nilai.semester=$P{semester} and nilai.tahun_ajaran=$P{tahun_ajaran} and mapel.kelompok != 'C' group by nilai.id_mapel]]>
+	</queryString>
+	<field name="Mata Pelajaran" class="java.lang.String"/>
+	<field name="Nilai Akhir" class="java.math.BigDecimal"/>
+	<field name="kelompok" class="java.lang.String"/>
+	<field name="Capaian Kompetensi" class="java.lang.String"/>
+	<group name="kelompok">
+		<groupExpression><![CDATA[$F{kelompok}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="25" forecolor="#000000" backcolor="#E6E6E6" uuid="0fef9b65-cb0c-449f-9129-e9d8aa8f8731"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kelompok}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="81">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4f227212-072c-4362-90e8-3ae72dbda2a8"/>
+				<text><![CDATA[Nama Peserta Didik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="61daa74a-b072-4048-a3b8-851e13de78c9"/>
+				<text><![CDATA[Nomor Induk/NISN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="46b34495-afb2-4323-a4e2-d7f63ed88fba"/>
+				<text><![CDATA[Sekolah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="20" uuid="3a1e7a60-7425-4ad3-9461-45e990f414da"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="13" height="20" uuid="aa4e24f7-ce03-4ed2-ac36-1aa98f5eafc2"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="20" width="13" height="20" uuid="84a5bb37-5e36-4e16-b208-588d2ebad5d0"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="40" width="13" height="20" uuid="fbb551ed-c4dd-4e49-ab39-570411805b66"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="60" width="13" height="20" uuid="2f09345a-1d8d-4c14-ae95-fc01403af94d"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="20" width="13" height="20" uuid="091a25fe-10a1-48dd-8b0d-693cd167d24b"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="100" height="20" uuid="1c115dd1-5d07-49db-b253-9b6c21af9e6e"/>
+				<text><![CDATA[Kelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="13" height="20" uuid="9a2be758-58ac-45c7-a881-8f83400c9671"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="40" width="13" height="20" uuid="fd61411c-21d1-4a6d-9332-a43ba0cbc4f4"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="20" width="100" height="20" uuid="c398a0ec-159f-479e-952f-6cb3698c61ad"/>
+				<text><![CDATA[Semester]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="40" width="100" height="20" uuid="a12d86c0-d3a9-44f6-8a42-bf25f34aaf42"/>
+				<text><![CDATA[Tahun Ajaran]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="0" width="203" height="20" uuid="30152a48-d87b-41e5-bd57-d8c246022837"/>
+				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="20" width="203" height="20" uuid="69e40911-8d0d-4a3a-bd78-a4ae961ae776"/>
+				<textFieldExpression><![CDATA[$P{nis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="0" width="126" height="20" uuid="5e5ffaf6-8456-4b06-96f4-27bc8696fdee"/>
+				<textFieldExpression><![CDATA[$P{kelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="20" width="126" height="20" uuid="9ef93786-e89b-4d9f-8c38-d571a2a835f7"/>
+				<textFieldExpression><![CDATA[$P{semester}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="40" width="126" height="20" uuid="8bf19ccc-3784-47f9-b096-a3ffe5e00448"/>
+				<textFieldExpression><![CDATA[$P{tahun_ajaran}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="113" y="61" width="203" height="20" uuid="c96e1860-217b-48be-9977-76df1646f57e"/>
+				<text><![CDATA[JL. Ceuri Ters Kopo Km. 13.5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="40" width="203" height="20" uuid="14a75d00-ad1e-4177-9675-0cfb8ba2cfd9"/>
+				<text><![CDATA[SMKN 1 Katapang  ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="31" uuid="15d44898-b8b5-4110-ac78-0520f753f2d4"/>
+				<textElement textAlignment="Left">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A. Nilai Akademik]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2be819b5-bbaa-43c0-ada6-e38097065a48"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="52" y="0" width="185" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="1ca07065-d59d-419d-9685-65d078de0a52"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mata Pelajaran ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="237" y="0" width="133" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="e3a563ee-2810-44b0-895b-84a583526e23"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nilai Akhir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="5e89a458-f080-49db-81b8-dbf1d620b450"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capaian Kompetensi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="52" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="c8e67d00-dd3f-454a-8ca2-741a28f8a3de"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="eb9b7940-113f-4152-bd03-c3d408cab6bd"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="52" y="0" width="185" height="20" uuid="9fa7b408-1d0b-4efe-b98d-1152902af83a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Mata Pelajaran}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="286ee262-96b7-42c7-b26d-5ff55b9bcb99"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Capaian Kompetensi}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="237" y="0" width="133" height="19" uuid="8f3f0acb-0120-4fd8-9dc0-5a33e03c3358"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nilai Akhir}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="2" width="52" height="18" uuid="6b50e237-46cd-45ec-ba15-209f41f20186"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19">
+			<staticText>
+				<reportElement x="216" y="0" width="100" height="13" uuid="0c129045-1e42-4425-83b8-b761026afd9f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="115" height="19" uuid="12195c2d-3e6c-493e-b4df-6e17d6deab7a"/>
+				<text><![CDATA[Dicetak dari jasper report]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="216" height="19" uuid="a01f2c39-1e55-4d12-9935-0dd36dcb5051"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

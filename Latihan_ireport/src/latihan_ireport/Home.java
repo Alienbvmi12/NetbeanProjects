@@ -11,6 +11,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
 
 /**
  *
@@ -18,10 +19,10 @@ import javax.swing.JOptionPane;
  */
 public class Home extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Home
-     */
+    Connection con;
+    
     public Home() {
+        this.con = koneksi.getConnection();
         initComponents();
     }
 
@@ -50,9 +51,9 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(162, 162, 162)
                 .addComponent(jButton1)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,8 +68,10 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            JasperPrint jp = JasperFillManager.fillReport(getClass().getResourceAsStream("theWorld.jasper"), null, koneksi.getConnection());
-            JasperViewer.viewReport(jp, false);
+            JasperReport jasperreport = JasperCompileManager.compileReport("theWorld.jrxml");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperreport, null, con);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setVisible(true);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);

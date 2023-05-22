@@ -212,7 +212,6 @@ public class login extends javax.swing.JFrame {
                     menuUtama menu = new menuUtama();
                     menu.show();
                     this.dispose();
-                    
                 }
             }else{
                  JOptionPane.showMessageDialog(null,"Username atau Password salah");
